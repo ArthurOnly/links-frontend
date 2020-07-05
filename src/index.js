@@ -2,6 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Routes from './routes'
 
+import './index.css'
+import {ThemeProvider} from '@material-ui/core'
+import theme from './theme'
+
 ReactDOM.render(
-  <Routes />,document.getElementById('root')
+  <ThemeProvider theme={theme}>
+    <Routes />
+  </ThemeProvider>
+  ,document.getElementById('root')
 );
