@@ -17,7 +17,7 @@ function SignIn() {
                 <TextField fullWidth name='email' inputRef={register({required:true})} label='Email' placeholder='meuemail@gmail.com' variant='outlined' style={{marginBottom: '10px'}}
                     error={!!errors.email}
                 />
-                <TextField fullWidth name='password' inputRef={register({required:true})} label='Senha' type='password' variant='outlined' style={{marginBottom: '10px'}} error={!!errors.email}/>
+                <TextField fullWidth name='password' inputRef={register({required:true})} label='Senha' type='password' variant='outlined' style={{marginBottom: '10px'}} error={!!errors.password}/>
                 <div style={{display: 'flex', flexDirection: 'row'}}>
                   <Button type='submit' variant='contained' size='large' disableElevation color='primary' fullWidth children='Login' style={{marginRight: '2.5px'}}/>
                   <Button variant='outlined' disableElevation color='primary' fullWidth children='Cadastre-se' style={{marginLeft: '2.5px'}}/>
