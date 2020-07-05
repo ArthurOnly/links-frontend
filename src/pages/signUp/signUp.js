@@ -3,18 +3,22 @@ import React from 'react'
 import {TextField, Button, Typography} from '@material-ui/core'
 import {Container,LoginContainer} from './signUp.styles'
 
+import {Redirect} from 'react-router-dom'
+
 import { useForm } from "react-hook-form"
 import {connect} from 'react-redux'
 
 import {signUp} from './signUp.actions'
 
 function SignUp(props) {
+    const {signUp, account} = props
     
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => {
         signUp(data)
     }
 
+    if (account) return <Redirect to='/links'/>
 
     return (
         <Container>
