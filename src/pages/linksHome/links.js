@@ -2,17 +2,13 @@ import React from 'react'
 
 import {Typography, Button} from '@material-ui/core'
 import {Container,LinkContainer} from './links.styles'
-import {Navbar,Page} from '../../global.styles'
-import {Link} from 'react-router-dom'
+import {Page} from '../../global.styles'
+import Navbar from '../../components/navbar/navbar'
 
 function Links() {
     return (
         <Page>
-            <Navbar>
-                <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit'}}><Typography variant='h4'>Back</Typography></Link>
-                <Link to="/links" style={{ color: 'inherit', textDecoration: 'inherit'}}><Typography variant='h4'>Links</Typography></Link>
-                <Link to="/sign-in" style={{ color: 'inherit', textDecoration: 'inherit'}}><Typography variant='h4'>Exit</Typography></Link>
-            </Navbar>
+            <Navbar/>
             <Container>
                 <Button variant='outlined' disableElevation color='primary' fullWidth children='Novo link' style={{marginBottom: '20px'}}/>
                 <LinkContainer>

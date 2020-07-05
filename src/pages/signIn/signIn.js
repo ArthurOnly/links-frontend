@@ -7,7 +7,7 @@ import {Container,LoginContainer} from './signIn.styles'
 import { useForm } from "react-hook-form"
 import {connect} from 'react-redux'
 
-import {signIn} from './signIn.actions'
+import {signIn} from '../../actions/account.actions'
 
 function SignIn(props) {
     const {account,signIn} = props
@@ -39,7 +39,7 @@ function SignIn(props) {
 }
 
 const mapStateToProps = state => {
-    return {account: state.signIn.account}
+    return {account: state.account.account}
 }
 
 export default connect(mapStateToProps,{signIn})(SignIn)

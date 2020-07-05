@@ -8,7 +8,7 @@ import {Redirect} from 'react-router-dom'
 import { useForm } from "react-hook-form"
 import {connect} from 'react-redux'
 
-import {signUp} from './signUp.actions'
+import {signUp} from '../../actions/account.actions'
 
 function SignUp(props) {
     const {signUp, account} = props
@@ -38,7 +38,7 @@ function SignUp(props) {
 }
 
 const mapStateToProps = state => {
-    return {account: state.signUp.account}
+    return {account: state.account.account}
 }
 
 export default connect(mapStateToProps,{signUp})(SignUp)
