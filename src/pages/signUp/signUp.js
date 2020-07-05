@@ -3,11 +3,18 @@ import React from 'react'
 import {TextField, Button, Typography} from '@material-ui/core'
 import {Container,LoginContainer} from './signUp.styles'
 
-import { useForm } from "react-hook-form";
+import { useForm } from "react-hook-form"
+import {connect} from 'react-redux'
 
-function SignUp() {
-    const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
+import {signUp} from './signUp.actions'
+
+function SignUp(props) {
+    
+    const { register, handleSubmit, errors } = useForm()
+    const onSubmit = data => {
+        signUp(data)
+    }
+
 
     return (
         <Container>
@@ -26,4 +33,8 @@ function SignUp() {
     );
 }
 
-export default SignUp
+const mapStateToProps = state => {
+    return {account: state.signUp.account}
+}
+
+export default connect(mapStateToProps,{signUp})(SignUp)
