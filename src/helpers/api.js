@@ -15,3 +15,9 @@ export const apiPost = (path, data={}) => {
     const options = {header: getHeaders()}
     return axios.post(url,data,options)
 }
+
+export const apiGet = (path, data={}) => {
+    const url = getApiUrl(path)
+    const options = {header: getHeaders()}
+    return axios.post(url,data,options)
+}

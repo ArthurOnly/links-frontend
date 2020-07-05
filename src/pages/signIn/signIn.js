@@ -1,4 +1,5 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
 
 import {TextField, Button, Typography} from '@material-ui/core'
 import {Container,LoginContainer} from './signIn.styles'
@@ -15,6 +16,8 @@ function SignIn(props) {
     const onSubmit = data => {
         signIn(data)
     }
+
+    if (account) return <Redirect to='/links'/>
 
     return (
         <Container>
