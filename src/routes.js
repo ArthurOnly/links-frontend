@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {BrowserRouter,Switch,Route,Redirect} from 'react-router-dom'
 
 import SignIn from './pages/signIn/signIn'
@@ -8,7 +8,17 @@ import CreateLink from './pages/createLink/createLink'
 import EditLink from './pages/editLink/editLink'
 import Links from './pages/linksHome/links'
 
-export default function Routes(){
+
+import {connect} from 'react-redux'
+import {initAccount} from './actions/account.actions'
+
+function Routes({initAccount,account}){
+    useEffect(()=>{
+        async function init(){
+            return await initAccount()
+        }
+        init()
+    },[initAccount])
     return(
         <BrowserRouter>
             <Switch>
@@ -23,3 +33,9 @@ export default function Routes(){
         </BrowserRouter>
     )
 }
+
+const mapStateToProps = state =>{
+    return {account: state.account.account}
+}
+
+export default connect(mapStateToProps, {initAccount})(Routes)
