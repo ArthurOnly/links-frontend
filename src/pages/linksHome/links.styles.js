@@ -10,6 +10,7 @@ export const LinkContainer = styled.div`
     padding: 15px;
     justify-content: space-between;
     box-sizing: border-box;
+    margin-bottom: 10px;
 
     img{
         height: 100%;

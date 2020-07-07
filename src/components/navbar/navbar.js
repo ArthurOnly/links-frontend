@@ -11,9 +11,7 @@ import {signOut} from '../../actions/account.actions'
 function Navbar(props){
     const {signOut, account} = props
 
-    console.log(account)
     if (!account) return <Redirect to='/sign-in'/>
-
 
     return(
         <Nav>

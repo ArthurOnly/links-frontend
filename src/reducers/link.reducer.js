@@ -1,17 +1,25 @@
-import {CREATE_LINK} from '../actions/link.actions'
+import {CREATE_LINK, LIST_LINK} from '../actions/link.actions'
 
 const initialState = {
-    link: null
+    link: null,
+    links: []
 }
 
 export default function(state=initialState,action){
     const {type,payload} = action
     switch(type){
-        case CREATE_LINK:
+        case CREATE_LINK: {
             const response = payload.data
             const link = response ? response.data : null
 
             return {...state, link}
+        }
+        case LIST_LINK: {
+            const response = payload.data
+            const links = response ? response.data : null
+
+            return {...state, links}
+        }
         default:
             return state           
     }

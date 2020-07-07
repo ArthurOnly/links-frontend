@@ -21,10 +21,10 @@ export const apiPost = (path, data={}) => {
     return axios.post(url,data,options)
 }
 
-export const apiGet = (path, data={}) => {
+export const apiGet = (path) => {
     const url = getApiUrl(path)
     const options = {headers: getHeaders()}
-    return axios.post(url,data,options)
+    return axios.get(url,options)
 }
 
 //Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImlhdCI6MTU5NDE0NjUxNiwiZXhwIjoxNTk0MTQ4MzE2fQ.plb4MLHF4J8_T2XDiq0j7_GisjgxKkfkpDAP10Yc5ww
