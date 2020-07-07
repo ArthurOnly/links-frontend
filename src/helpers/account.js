@@ -13,10 +13,10 @@ export const getAccount = () => getCookie(COOKIE_ACCOUNT)
 export const setAccount = account => setCookie(COOKIE_ACCOUNT,account,options)
 export const removeAccount = () => removeCookie(COOKIE_ACCOUNT)
 
-export const getToken = () => setCookie(COOKIE_TOKEN)
+export const getToken = () => getCookie(COOKIE_TOKEN)
 export const setToken = token => setCookie(COOKIE_TOKEN,token,options)
 export const removeToken = () => removeCookie(COOKIE_TOKEN)
 
-export const getRefreshToken = () => setCookie(COOKIE_REFRESH_TOKEN)
+export const getRefreshToken = () => getCookie(COOKIE_REFRESH_TOKEN)
 export const setRefreshToken = refreshToken => setCookie(COOKIE_REFRESH_TOKEN,refreshToken,options)
 export const removeRefreshToken = () => removeCookie(COOKIE_REFRESH_TOKEN)

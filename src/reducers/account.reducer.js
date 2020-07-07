@@ -21,7 +21,7 @@ export default function(state = initialState,action){
             if(token) setToken(token)
             if(refreshToken) setRefreshToken(refreshToken)
 
-            return { ...initialState,account: payload}
+            return { ...initialState,account: account}
 
         case SIGN_OUT:
             removeAccount()

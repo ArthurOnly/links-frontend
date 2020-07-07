@@ -17,8 +17,8 @@ export default function Routes(){
 
                 <Route exact path='/'><Redirect to='/sign-in'/></Route>                
                 <Route exact path='/links'><Links/></Route>
-                <Route exact path='/links/create'><CreateLink/></Route>
-                <Route exact path='/links/edit'><EditLink/></Route>
+                <Route path='/links/create'><CreateLink/></Route>
+                <Route path='/links/edit'><EditLink/></Route>
             </Switch>
         </BrowserRouter>
     )
