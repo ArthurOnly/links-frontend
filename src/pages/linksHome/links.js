@@ -23,8 +23,6 @@ function Links({linkList, links}) {
         getLinks()
     }, [linkList])
 
-    console.log(links)
-
     return (
         <Page>
             <Navbar/>
@@ -40,7 +38,7 @@ function Links({linkList, links}) {
                                 <Typography variant='body1'>{el.url}</Typography>
                             </div>
                             <div>
-                                <Typography variant='h5'>Editar</Typography>
+                                <Typography variant='h5' style={{cursor: 'pointer'}} onClick={()=>history.push(`/links/edit/${el.id}`)}>Editar</Typography>
                                 <Typography variant='body1'>Deletar</Typography>
                             </div>
                         </LinkContainer>

@@ -13,12 +13,8 @@ import {connect} from 'react-redux'
 import {initAccount} from './actions/account.actions'
 
 function Routes({initAccount,account}){
-    useEffect(()=>{
-        async function init(){
-            return await initAccount()
-        }
-        init()
-    },[initAccount])
+    useEffect(()=>initAccount(),[initAccount])
+    
     return(
         <BrowserRouter>
             <Switch>
@@ -28,7 +24,7 @@ function Routes({initAccount,account}){
                 <Route exact path='/'><Redirect to='/sign-in'/></Route>                
                 <Route exact path='/links'><Links/></Route>
                 <Route path='/links/create'><CreateLink/></Route>
-                <Route path='/links/edit'><EditLink/></Route>
+                <Route path='/links/edit/:id'><EditLink/></Route>
             </Switch>
         </BrowserRouter>
     )
@@ -37,5 +33,6 @@ function Routes({initAccount,account}){
 const mapStateToProps = state =>{
     return {account: state.account.account}
 }
+
 
 export default connect(mapStateToProps, {initAccount})(Routes)
