@@ -7,7 +7,7 @@ const getApiUrl = path =>{
     return API_END + path
 }
 
-const getHeaders = headers =>{
+const getHeaders = () =>{
     const token = getToken()
     if (!token) return {}
     return {
@@ -25,6 +25,12 @@ export const apiGet = (path) => {
     const url = getApiUrl(path)
     const options = {headers: getHeaders()}
     return axios.get(url,options)
+}
+
+export const apiPut = (path, data={}) => {
+    const url = getApiUrl(path)
+    const options = {headers: getHeaders()}
+    return axios.put(url,data,options)
 }
 
 //Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjgsImlhdCI6MTU5NDE0NjUxNiwiZXhwIjoxNTk0MTQ4MzE2fQ.plb4MLHF4J8_T2XDiq0j7_GisjgxKkfkpDAP10Yc5ww

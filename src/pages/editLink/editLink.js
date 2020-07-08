@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 
 import {TextField, Button, Typography, Checkbox, FormControlLabel} from '@material-ui/core'
@@ -8,19 +8,32 @@ import { useForm } from "react-hook-form"
 import Navbar from '../../components/navbar/navbar'
 
 import {connect} from 'react-redux'
-import {linkGet} from '../../actions/link.actions'
+import {linkGet,linkUpdate} from '../../actions/link.actions'
 
-function EditLink({link, linkGet}) {
-    const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => console.log(data);
-
+function EditLink({link, linkGet, linkUpdate}) {
     const {id} = useParams()
-    
-    useEffect(()=>{
-        linkGet(id)
-    },[id,linkGet])
 
-    console.log('***** link', link)
+    const { register, handleSubmit, errors, reset } = useForm();
+
+    useEffect(()=>{
+        reset(linkGet(id))
+    },[id,linkGet,reset])
+
+    useEffect(() => {
+        reset({
+            label: link ? link.label : " ",
+            url: link ? link.url : " ",
+            isSocial: link ? link.isSocial : false
+        })
+    },[reset,link])
+
+    const [init,setInit] = useState(link ? link.isSocial : false)
+
+    
+    const onSubmit = data => {
+        linkUpdate(id,data)
+        console.log(data)
+    }
 
     return (
         <Page>
@@ -29,18 +42,17 @@ function EditLink({link, linkGet}) {
                 <LoginContainer>
                     <Typography variant='h1' style={{marginBottom: '20px'}}>Editar link</Typography>
                     <form onSubmit={handleSubmit(onSubmit)} style={{width:'100%'}}>
-                        <TextField fullWidth name='name' inputRef={register({required:true})} label='name' placeholder='Meu facebook' variant='outlined' style={{marginBottom: '10px'}}
-                            error={!!errors.name} defaultValue={link ? link.label : null}
+                        <TextField fullWidth name='label' inputRef={register({required:true})} label='name' placeholder='Meu facebook' variant='outlined' style={{marginBottom: '10px'}}
+                            error={!!errors.name}
                         />
-                        <TextField defaultValue={link ? link.url : null} fullWidth name='url' inputRef={register({required:true})} label='url' type='name' variant='outlined' style={{marginBottom: '10px'}} error={!!errors.url}/>
+                        <TextField fullWidth name='url' inputRef={register({required:true})} label='url' type='name' variant='outlined' style={{marginBottom: '10px'}} error={!!errors.url}/>
                         <FormControlLabel
-                            value="isSocial"
-                            control={<Checkbox checked={link ? link.isSocial ? true : false : false} name='isSocial' color='primary' inputRef={register}/>}
+                            control={<Checkbox inputRef={register} checked={init} onChange={()=>setInit(!init)} name='isSocial' color='primary'/>}
                             label="isSocial"
                             labelPlacement="end"
                             style={{marginBottom: '20px'}}
                         />
-                        <Button type='submit' variant='contained' size='large' disableElevation color='primary' fullWidth children='Cadastrar link'/>
+                        <Button type='submit' variant='contained' size='large' disableElevation color='primary' fullWidth children='Atualizar link'/>
                     </form>
                 </LoginContainer>
             </Container>
@@ -52,4 +64,4 @@ const mapStateToProps = state => {
     return {link: state.link.link}
 }
 
-export default connect(mapStateToProps, {linkGet})(EditLink)
+export default connect(mapStateToProps, {linkGet,linkUpdate})(EditLink)
