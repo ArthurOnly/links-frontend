@@ -11,6 +11,7 @@ export const LinkContainer = styled.div`
     justify-content: space-between;
     box-sizing: border-box;
     margin-bottom: 10px;
+    transition: 0.2s;
 
     img{
         height: 100%;
@@ -21,6 +22,10 @@ export const LinkContainer = styled.div`
     div{
         display: flex;
         flex-direction: column;
+    }
+
+    :hover{
+        opacity: 90%;
     }
 `;
 

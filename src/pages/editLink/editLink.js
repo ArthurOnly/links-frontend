@@ -32,7 +32,6 @@ function EditLink({link, linkGet, linkUpdate}) {
     
     const onSubmit = data => {
         linkUpdate(id,data)
-        console.log(data)
     }
 
     return (

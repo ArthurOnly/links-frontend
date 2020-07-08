@@ -1,9 +1,10 @@
-import {apiPost, apiGet, apiPut} from '../helpers/api'
+import {apiPost, apiGet, apiPut, apiDelete} from '../helpers/api'
 
 export const CREATE_LINK = 'CREATE_LINK'
 export const LIST_LINK = 'LIST_LINK'
 export const GET_LINK = 'GET_LINK'
 export const UPDATE_LINK = 'UPDATE_LINK'
+export const DELETE_LINK = 'DELETE_LINK'
 
 export const linkCreate = data => {
     data.isSocial = !!data.isSocial
@@ -19,6 +20,11 @@ export const linkList = async() => {
 export const linkGet = async(id) => {
     const payload = await apiGet(`/link/${id}`)
     return {type: GET_LINK, payload: payload}
+}
+
+export const linkDelete = async(id) => {
+    const payload = await apiDelete(`/link/${id}`)
+    return {type: DELETE_LINK, payload: payload}
 }
 
 export const linkUpdate = async(id,data) => {
