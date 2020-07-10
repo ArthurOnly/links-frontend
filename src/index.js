@@ -8,9 +8,12 @@ import theme from './theme'
 import {Provider} from 'react-redux'
 import store from './store/store'
 
+import TokenRefresher from './components/tokenRefresher/tokenRefresher'
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
+      <TokenRefresher/>
       <Routes />
     </Provider>
   </ThemeProvider>

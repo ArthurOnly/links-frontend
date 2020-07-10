@@ -12,7 +12,7 @@ import Links from './pages/linksHome/links'
 import {connect} from 'react-redux'
 import {initAccount} from './actions/account.actions'
 
-function Routes({initAccount,account}){
+function Routes({initAccount}){
     useEffect(()=>initAccount(),[initAccount])
     
     return(

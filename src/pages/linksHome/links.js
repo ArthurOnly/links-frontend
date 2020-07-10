@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react'
 import { useHistory } from 'react-router-dom';
 import {connect} from 'react-redux'
 
-import {Typography, Button, Dialog, DialogActions, DialogContent, DialogTitle, DialogContentText} from '@material-ui/core'
+import {Typography, Button, Dialog, DialogActions, DialogTitle} from '@material-ui/core'
 import {Container,LinkContainer} from './links.styles'
 import {Page} from '../../global.styles'
 import Navbar from '../../components/navbar/navbar'
@@ -35,7 +35,7 @@ function Links({linkList, links, linkDelete}) {
                 {links ? links.map(el=>{
                     return (
                         <LinkContainer key={el.id}>
-                            <img></img>
+                            <img alt=''></img>
                             <div>
                                 <Typography variant='h5'>{el.label}</Typography>
                                 <Typography variant='body1'>{el.url}</Typography>
@@ -63,7 +63,6 @@ function Links({linkList, links, linkDelete}) {
                     No
                 </Button>
                 <Button onClick={async()=>{
-                    console.log(activeLink)
                     await linkDelete(activeLink)
                     linkList()  
                     setDialog(false)
@@ -79,7 +78,6 @@ function Links({linkList, links, linkDelete}) {
 const mapStateToProps = state => {
     return {
         links: state.link.links,
-    
     }
 }
 

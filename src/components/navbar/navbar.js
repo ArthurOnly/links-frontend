@@ -2,7 +2,6 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import {Redirect} from 'react-router-dom'
 
-import {Link} from 'react-router-dom'
 import {Typography, Link as MuiLink} from '@material-ui/core'
 import {Navbar as Nav} from '../../global.styles'
 
